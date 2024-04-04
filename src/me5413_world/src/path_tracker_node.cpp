@@ -41,7 +41,6 @@ void dynamicParamCallback(const me5413_world::path_trackerConfig& config, uint32
   PARAMS_UPDATED = true;
 }
 
-// Class constructor
 PathTrackerNode::PathTrackerNode() : tf2_listener_(tf2_buffer_)
 {
   f = boost::bind(&dynamicParamCallback, _1, _2);
