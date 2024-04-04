@@ -52,9 +52,11 @@ class PathTrackerNode
   void localPathCallback(const nav_msgs::Path::ConstPtr& path);
 
   tf2::Transform convertPoseToTransform(const geometry_msgs::Pose& pose);
-  double computeStanelyControl(const double heading_error, const double cross_track_error, const double velocity);
+  geometry_msgs::Twist computeControlOutputs(const nav_msgs::Odometry& odom_robot, const nav_msgs::Path::ConstPtr& path);
+  geometry_msgs::Point findGoalPoint(const tf2::Vector3& point_robot, const nav_msgs::Path::ConstPtr& path, double look_ahead_dist);
+  double computeStanleyControl(const double heading_error, const double cross_track_error, const double velocity);
   geometry_msgs::Twist computeControlOutputs(const nav_msgs::Odometry& odom_robot, const geometry_msgs::Pose& pose_goal);
-
+  
   // ROS declaration
   ros::NodeHandle nh_;
   ros::Timer timer_;
